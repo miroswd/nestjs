@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  nest_postgres: 
+    image: postgres:12-alpine
+    container_name: nest
+    restart: always
+    ports: 
+      - ${POSTGRES_PORT}:5432
+    environment: 
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    volumes:
+      - pgdata:/data/postgres
+volumes: 
+  pgdata:   
+    driver: local
